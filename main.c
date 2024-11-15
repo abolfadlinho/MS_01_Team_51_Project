@@ -89,12 +89,16 @@
 // }
 #include "pico/stdlib.h"
 #include <stdio.h>
-#include "ultrasonic.h"  // Include the header for ultrasonic sensor functions
+#include "ultrasonic.h"
 #include "infrared.h"
-//#include "servo.h"
+#include "servo.h"
+#include "hardware/adc.h"
+#include "hardware/pwm.h"
 
 uint trigPin = 4;
 uint echoPin = 3;
+int servo_pin_out = 26;
+int servo_init_pos = 400;
 
 int main()
 {
@@ -102,12 +106,21 @@ int main()
 
     setupUltrasonicPins(trigPin, echoPin);  // Initialize the sensor pins
     infrared_init();
-    servo_init();
+    //green led
     gpio_init(6);
     gpio_set_dir(6, GPIO_OUT);
 
+    //mesh shaghala ya3
+    // adc_init();
+    // adc_gpio_init(26);
+    // gpio_init(26);
+    // gpio_set_dir(26, GPIO_OUT);
+
+    servo_init(servo_pin_out, servo_init_pos);
+
 
     while (true) {
+        //ultrasonic block working
         /*uint64_t distance=getCm( trigPin, echoPin);
         if(distance<20){
             gpio_put(6,true);
@@ -115,28 +128,31 @@ int main()
         else{
             gpio_put(6,false);
         }*/
-        /*bool irRead = infrared_read_digital();
 
-         if(irRead){
-              gpio_put(6, false);  // Set the LED pin high
-             sleep_ms(200);      // Short delay for visual clarity
-         }
-        else{
+        //servo block working
+        sweep();
+
+        //ir block working: clockwise menawar, anticlockwise mesh menawar, fel nos tamam: el ir el adeem abo 3 pins wel gedid abo 4 pins
+        // bool irRead = infrared_read_digital();
+        // if(irRead){
+        //     gpio_put(6, false);  // Set the LED pin high
+        //     //sleep_ms(200);      // Short delay for visual clarity
+        // } else{
+        //     gpio_put(6, true);  // Set the LED pin high
+        //     //sleep_ms(200);      // Short delay for visual clarity
+        // }
+
+        //mesh shaghalaaaa analog ya3
+        /*uint16_t isRead = infrared_read_analog();
+        if(isRead < 200) {
             gpio_put(6, true);  // Set the LED pin high
-            sleep_ms(200);      // Short delay for visual clarity
+            //sleep_ms(200);      // Short delay for visual clarity
+        } else{
+            gpio_put(6, false);  // Set the LED pin high
+            //sleep_ms(200);      // Short delay for visual clarity
+        }*/
 
-         }*/
-        
         // sleep_ms(500);  
-
-        // // Get the distance in cm from the ultrasonic sensor
-        // int distance = getCm(trigPin, echoPin);
-        // printf("Distance: %d cm\n", distance);  // Print the distance
-
-        // bool irRead = infrared_read_digital()
-
-        // gpio_put(6, 0);  // Set the LED pin low
-        // sleep_ms(500);  
-        sleep_ms(500);
+        sleep_ms(200);
     }
 }

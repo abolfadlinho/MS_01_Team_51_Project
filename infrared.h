@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <hardware/adc.h>
 
 // Define pins
 #define INFRARED_DO_PIN 2       // GPIO pin for digital output (DO)

@@ -1,5 +1,7 @@
 #include "infrared.h"
 #include "pico/stdlib.h"
+#include "hardware/adc.h"
+
 // #include "hardware/adc.h"
 
 // Initialize the IR sensor
@@ -19,7 +21,7 @@ bool infrared_read_digital(void) {
 }
 
 // Read the analog value from the IR sensor's AO pin (0-4095 for 12-bit ADC)
-// uint16_t infrared_read_analog(void) {
-//     adc_select_input(0);              // Select ADC0 (assuming AO is connected to GPIO26/ADC0)
-//     return adc_read();                 // Read and return ADC value (0 to 4095)
-// }
+uint16_t infrared_read_analog(void) {
+    adc_select_input(0);              // Select ADC0 (assuming AO is connected to GPIO26/ADC0)
+    return adc_read();                 // Read and return ADC value (0 to 4095)
+}
