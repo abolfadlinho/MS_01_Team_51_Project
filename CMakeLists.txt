@@ -18,6 +18,7 @@ add_executable(${PROJECT_NAME}
     ultrasonic.c
     infrared.c
     servo.c
+    touch.c
 )
 
 # Create map/bin/hex/uf2 files

@@ -92,31 +92,31 @@
 #include "ultrasonic.h"
 #include "infrared.h"
 #include "servo.h"
+#include "touch.h"
 #include "hardware/adc.h"
 #include "hardware/pwm.h"
 
 uint trigPin = 4;
 uint echoPin = 3;
 int servo_pin_out = 26;
+int touch_pin = 16;
+
 int servo_init_pos = 400;
 
 int main()
 {
-    stdio_init_all();  // Initialize standard I/O
+    stdio_init_all();
 
-    setupUltrasonicPins(trigPin, echoPin);  // Initialize the sensor pins
+
+    //inits
+    setupUltrasonicPins(trigPin, echoPin);
     infrared_init();
+    touch_init(touch_pin);
+    servo_init(servo_pin_out, servo_init_pos);
+
     //green led
     gpio_init(6);
     gpio_set_dir(6, GPIO_OUT);
-
-    //mesh shaghala ya3
-    // adc_init();
-    // adc_gpio_init(26);
-    // gpio_init(26);
-    // gpio_set_dir(26, GPIO_OUT);
-
-    servo_init(servo_pin_out, servo_init_pos);
 
 
     while (true) {
@@ -130,7 +130,7 @@ int main()
         }*/
 
         //servo block working
-        sweep();
+        //sweep();
 
         //ir block working: clockwise menawar, anticlockwise mesh menawar, fel nos tamam: el ir el adeem abo 3 pins wel gedid abo 4 pins
         // bool irRead = infrared_read_digital();
@@ -139,6 +139,16 @@ int main()
         //     //sleep_ms(200);      // Short delay for visual clarity
         // } else{
         //     gpio_put(6, true);  // Set the LED pin high
+        //     //sleep_ms(200);      // Short delay for visual clarity
+        // }
+
+        //touch block working
+        // bool touchRead = touch_is_pressed(touch_pin);
+        // if(touchRead){
+        //     gpio_put(6, true);  // Set the LED pin high
+        //     //sleep_ms(200);      // Short delay for visual clarity
+        // } else{
+        //     gpio_put(6, false);  // Set the LED pin high
         //     //sleep_ms(200);      // Short delay for visual clarity
         // }
 
