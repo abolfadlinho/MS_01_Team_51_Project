@@ -19,6 +19,7 @@ add_executable(${PROJECT_NAME}
     infrared.c
     servo.c
     touch.c
+    lcd.c
 )
 
 # Create map/bin/hex/uf2 files
