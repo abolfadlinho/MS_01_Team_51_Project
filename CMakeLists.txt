@@ -20,6 +20,7 @@ add_executable(${PROJECT_NAME}
     servo.c
     touch.c
     lcd.c
+    relay.c
 )
 
 # Create map/bin/hex/uf2 files
