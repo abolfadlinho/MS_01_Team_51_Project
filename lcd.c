@@ -82,6 +82,12 @@ void lcdString(char *string) {
         lcdChar(*string++);
 }
 
+void lcdStringCount(char *string, int count) { //TODO
+    // Display a String of characters
+    while (*string)
+        lcdChar(*string++);
+}
+
 void lcdWriteInt(char *format, uint32_t number) {
     // Display integer numbers, format is standard C printf() like %d
     char buffer[20];

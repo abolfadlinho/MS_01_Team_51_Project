@@ -6,7 +6,7 @@
 #include <hardware/adc.h>
 
 // Define pins
-#define INFRARED_DO_PIN 2       // GPIO pin for digital output (DO)
+#define INFRARED_DO_PIN 18       // GPIO pin for digital output (DO)
 #define INFRARED_AO_PIN 26      // ADC pin for analog output (AO, ADC0)
 
 // Function prototypes

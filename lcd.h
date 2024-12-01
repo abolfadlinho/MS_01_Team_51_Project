@@ -12,6 +12,7 @@ void lcdCommand(uint8_t command);
 void lcdInit(void);
 void lcdChar(uint8_t ch);
 void lcdString(char *string);
+void lcdStringCount(char *string, int count);
 void lcdWriteInt(char *format, uint32_t number);
 void lcdWriteFloat(char *format, double number);
 void lcdSetCursor(uint8_t row, uint8_t col);

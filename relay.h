@@ -1,7 +1,7 @@
 #ifndef relay_h
 #define relay_h
 
-#define RELAY_PIN 14
+#define RELAY_PIN 17
 
 #include "pico/stdlib.h"
 
