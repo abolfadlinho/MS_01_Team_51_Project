@@ -40,8 +40,16 @@ void servo_init(int servoPin, float startMillis)
 }
 
 void sweep() {
-    currentMillis += (direction)?100:-100;
+    currentMillis += (direction)?300:-300;
     if (currentMillis >= 2400) direction = false;
     if (currentMillis <= 400) direction = true;
     setMillis(SERVO_PIN, currentMillis);
+}
+
+void open() {
+    setMillis(SERVO_PIN, 2400);
+}
+
+void close() {
+    setMillis(SERVO_PIN, 400);
 }
